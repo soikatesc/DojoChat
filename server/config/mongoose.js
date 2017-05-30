@@ -1,7 +1,7 @@
 var mongoose = require('mongoose')
 var fs = require('fs')
 
-mongoose.connect('mongodb://localhost/belt_exam')
+mongoose.connect('mongodb://localhost/dojo_chat')
 mongoose.Promise = global.Promise
 
 var models_path = __dirname + '/../models'

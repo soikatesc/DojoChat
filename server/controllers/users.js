@@ -5,6 +5,7 @@ var bcrypt = require('bcryptjs')
 
 module.exports = {
 	index: function(req, res){
+		console.log('index route for user')
 		User.find({}, function(err, users){
 			if(err){
 				return res.json(err)

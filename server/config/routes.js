@@ -1,7 +1,7 @@
 var Users = require('../controllers/users')
 
-var Questions = require('../controllers/questions')
-var Answers = require('../controllers/answers')
+var Messages = require('../controllers/messages')
+
 
 
 module.exports = function(app){
@@ -13,13 +13,10 @@ module.exports = function(app){
 	app.delete('/users/:id', Users.destroy)
 	app.put('/users/:id', Users.update)
 
-	//question route
-	app.get('/questions', Questions.index)
-	app.post('/questions', Questions.create)
-	app.get('/questions/:id', Questions.show)
+	//messages route
+	app.get('/messages', Messages.index)
+	app.post('/messages', Messages.create)
+	app.delete('/messages/:id', Messages.destroy)
 
-	//answers route
-	app.get('/answers', Answers.index)
-	app.post('/answers', Answers.create)
-	app.put('/answers/:id/likes', Answers.updateLikes)
+
 }
