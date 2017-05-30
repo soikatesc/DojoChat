@@ -1,0 +1,56 @@
+
+Front end:
+-----------
+User login
+User Registration (password and confirm password)
+www.dojochat.com (landing page)
+logo
+login fields
+registration fields
+footer div for contact
+link from the about
+Contributor profiles
+About this project
+Chat dashboard:
+nav bar 
+logo
+a cool messenger like slack
+background color
+
+Backend:
+----------
+Complete user model
+First name
+Last name
+username
+password
+birthday
+email
+[an array of messages]
+timestamps
+Messages model
+user(relationship)
+message
+sockets
+send images
+Additional features:(need to work on)
+——————————----------------
+Upload a profile 
+pic
+sound effect
+send 
+recieve
+Status of users
+joined 
+left
+alert message
+Automatic scroll
+Lower Priority:
+----------------
+Facebook Sign in(passport)
+Google Sign in (passport)
+Wish features:
+-----------------
+Video Chat
+Calling
+emojis
