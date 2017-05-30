@@ -3,11 +3,10 @@ var bp = require('body-parser')
 var passport = require('passport')
 var port  = process.env.PORT || 8000
 var ip = require('ip')
-// var os = require('os')
-// var networkInterfaces = os.networkInterfaces( )
 
 var app = express()
 var path = require('path')
+//getting the ip address of current server
 var ip_address = ip.address()
 
 
@@ -20,8 +19,6 @@ require('./server/config/mongoose')
 
 //setup routes
 require('./server/config/routes')(app)
-// console.log(port)
-// console.log(ip.address())
 
 var server = app.listen(port, ip_address , function(){
 	console.log('/'.repeat(40))
