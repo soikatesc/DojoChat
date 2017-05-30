@@ -1,0 +1,27 @@
+<div ng-controller="QuestionsController as QC">
+	<div ng-init="QC.show()">
+	<a href="#!/dashboard">Home</a>
+	<div ng-init="UC.session()">
+		<button ng-click="UC.logout()">Logout</button>
+		<h1>Welcome {{UC.current_user.username}} </h1>
+	</div>
+
+	<div >
+		<a href="#!/question/{{QC.question._id}}/new_answer">Asnwer this questinons</a>
+		<h1>{{QC.question.question}}?</h1>
+		<h3>{{QC.question.description}}</h3>
+		<hr>
+
+		<div ng-repeat="answer in QC.question.answers | orderBy: '-likes.count'">
+			<h2>{{answer.user.username}}:</h2>
+			<h3>Likes: {{answer.likes.count}}</h3>
+			<h2>answer:{{answer.answer}}</h2>
+			<h4>details:{{answer.details}}</h4>
+			<button  ng-if="answer.likes.users.indexOf(UC.current_user._id) == -1" ng-click="QC.likes(answer._id)" class="btn btn-info">Like</button>
+		<hr>
+		</div>
+
+	</div>
+	</div>
+
+</div>

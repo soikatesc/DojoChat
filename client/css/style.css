@@ -1,0 +1,35 @@
+.header{
+	background-color: #FF4500;
+}
+
+.header-left{
+	display: inline-block;
+}
+.header-right{
+	display: inline-block;
+	float: right;
+	vertical-align: top;
+	margin-top: 50px;
+	margin-right: 50px;
+	font-size: 20px;
+}
+
+#user-name{
+	color: orange;
+	text-transform: capitalize;
+	font-size: 35px;
+}
+
+.errors{
+	color: red;
+}
+
+
+#chat-wrap{
+	padding: 5px;
+	width: 500px;
+	border: 2px solid black;
+	height: 300px;
+	overflow: auto;
+	margin-bottom: 5px;
+}

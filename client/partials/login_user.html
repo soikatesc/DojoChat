@@ -1,0 +1,64 @@
+<div>
+	<h1>Login and Registration</h1>
+	<div class="alert alert-danger" style="padding:0px">
+  		<p role="alert" ng-repeat="error in UC.login_errors">{{error}}</p>
+
+		<p role="alert" ng-repeat="error in UC.registration_errors">{{error}}</p>
+	</div>
+
+
+	<div class="row">
+		<form class="form-group col-md-6" ng-submit="UC.create(UC.newUser)">
+		<div class="form-group">
+	    	<label for="email">Email address</label>
+	    	<input ng-model="UC.newUser.email" type="email" class="form-control" id="email" placeholder="Email">
+	  	</div>
+
+	  	<div class="form-group">
+	    	<label for="username">User name</label>
+	    	<input ng-model="UC.newUser.username" type="text" class="form-control" id="username">
+	  	</div>
+
+		<div class="form-group">
+	    	<label for="first_name">First Name</label>
+	    	<input ng-model="UC.newUser.first_name" type="text" class="form-control" id="first_name" placeholder="First name">
+	  	</div>
+
+	  	<div class="form-group">
+	    	<label for="last_name">Last Name</label>
+	    	<input ng-model="UC.newUser.last_name" type="text" class="form-control" id="last_name" placeholder="Last name">
+	  	</div>
+
+	  	<div class="form-group">
+	    	<label for="password">Password</label>
+	    	<input ng-model="UC.newUser.password" type="password" class="form-control" id="password" placeholder="Password">
+	  	</div>
+
+	  	<div class="form-group">
+	    	<label for="password-confirm">Confirm Password</label>
+	    	<input ng-model="UC.newUser.confirmPassword" type="password" class="form-control" id="password-confirm">
+	  	</div>
+
+	  	<div class="form-group">
+	    	<label for="birthday">Birthday</label>
+	    	<input ng-model="UC.newUser.birthday" type="Date" class="form-control" id="birthday">
+	  	</div>
+
+	  	<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+		<form class="form-group col-md-6" ng-submit="UC.login(UC.loginUser)">
+			<div>
+		    	<label for="email">Email address</label>
+		    	<input ng-model="UC.loginUser.email" type="email" class="form-control" id="email" placeholder="Email">
+
+		    	<label for="password">Password</label>
+		    	<input ng-model="UC.loginUser.password" type="password" class="form-control" id="password" placeholder="Password">
+		    	<br>
+		    	<div>
+		    		<button type="submit" class="btn btn-primary">Submit</button>
+		    	</div>    	
+		  	</div>
+		</form>
+	</div>
+
+</div>

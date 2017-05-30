@@ -1,0 +1,23 @@
+{
+  "name": "mean_belt_exam",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Md Rahaman <soikatesc@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-route": "^1.6.4",
+    "angular-cookies": "^1.6.4",
+    "ng-ip-address": "^1.1.11"
+  }
+}
