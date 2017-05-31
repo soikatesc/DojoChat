@@ -3,12 +3,20 @@ var bp = require('body-parser')
 var passport = require('passport')
 var port  = process.env.PORT || 8000
 var ip = require('ip')
+var getUserMedia = require('getusermedia');
+
 
 var app = express()
 var path = require('path')
 //getting the ip address of current server
 var ip_address = ip.address()
 
+app.use('*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, sid")
+  next();
+});
 
 app.use(express.static(__dirname + '/client'))
 app.use(express.static(__dirname + '/bower_components'))
@@ -26,13 +34,4 @@ var server = app.listen(port, ip_address , function(){
 	console.log('/'.repeat(40))
 })
 
-var io = require('socket.io').listen(server)
-
-io.sockets.on('connection', function(socket){
-	console.log('working')
-	console.log(socket.id)
-	socket.on('send msg', function(data){
-		console.log(data)
-		io.emit('get msg', {data:data, socket_id: socket.id})
-	})
-})
+require('./server/controllers/socket_controller')(server)

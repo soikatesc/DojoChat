@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'ngCookies', 'ng-ip-address'])
+var app = angular.module('app', ['ngRoute', 'ngCookies', 'ng-ip-address', 'lr.upload'])
 
 console.log('loading config file....')
 
@@ -12,6 +12,9 @@ app.config(function($routeProvider){
 		templateUrl: 'partials/dashboard.html',
 		controller: 'UsersController as UC'
 
+	})
+	.when('/video', {
+		templateUrl: 'partials/video.html',
 	})
 	.otherwise({
 		redirectTo: '/'

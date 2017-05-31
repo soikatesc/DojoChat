@@ -56,7 +56,7 @@ app.controller('UsersController', function(UserFactory,$cookies, $location){
 
 			else{
 				//save the user into session
-				var user_id = res.data._id
+				var user_id = (res.data._id)
 				$cookies.put('user_id', user_id)
 				$location.url('dashboard')
 				//redirect to next page

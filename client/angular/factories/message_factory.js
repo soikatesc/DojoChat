@@ -1,8 +1,9 @@
+app.factory('MessageFactory', function($http){
+	var factory = {}
 
-app.factory('ChatFactory', function($location){
+	factory.index = function(callback){
+		$http.get('/messages').then(callback)
+	}
 
-	var socket = io.connect('http://'+$location.$$host+':'+$location.$$port)
-
-	return socket
+	return factory
 })
-

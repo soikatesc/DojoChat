@@ -1,28 +1,31 @@
-app.controller('ChatsController', function(ChatFactory, $scope, $cookies, $location){
+app.controller('MessagesController', function(SocketConnector, MessageFactory, $scope, $cookies, $location, $http, upload){
 	console.log('Initializing ChatController...')
 
 	var self = this
 	self.msgs = []
 
-
-	self.sendMsg = function(msg, user){
-		// console.log($location)
-		var audio = new Audio('../../assets/sound/track1.mp3');
-		audio.play();
-		msg.user = user.username
-		msg.user_id = $cookies.get('user_id')
-		ChatFactory.emit('send msg', msg)
-		msg.text = ''
-		console.log(msg);
+	self.index = function(){
+		MessageFactory.index(function(res){
+			var recent_msg = res.data[res.data.length-1]
+			if(recent_msg.user._id != $cookies.get('user_id')){
+				var audio = new Audio('../../assets/sound/recv.mp3');
+				audio.play();
+			}
+			self.msgs = res.data
+		})
 	}
 
-	ChatFactory.on('get msg', function(data){
-		if(data.data.user_id != $cookies.get('user_id')){
-			var audio = new Audio('../../assets/sound/recv.mp3');
-			audio.play();
-		}
-		self.msgs.push(data)
+	self.sendMsg = function(msg, user){
+		var audio = new Audio('../../assets/sound/track1.mp3');
+		audio.play();
+
+		msg.user = user._id
+		SocketConnector.emit('send msg', msg)
+		msg.content = ''
+	}
+
+	SocketConnector.on('get msg', function(data){
+		self.index()
 		$scope.$digest()
-	})
-	
+	})	
 })
