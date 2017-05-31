@@ -20,6 +20,7 @@ app.use('*', function(req, res, next) {
 
 app.use(express.static(__dirname + '/client'))
 app.use(express.static(__dirname + '/bower_components'))
+app.use(express.static(__dirname + '/uploads'))
 app.use(bp.json())
 
 //connecting to mongoose
