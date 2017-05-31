@@ -12,15 +12,16 @@ module.exports = {
 		})
 	},
 	create: function(req, res){
-		Message.create(req.body, function(err, message){
+		console.log('create', req)
+		Message.create(req, function(err, message){
 			if(err){
-				return res.json(err);
+				return err;
 			}
-			User.findByIdAndUpdate(req.body.user, { $push : { messages: message._id }}, function(err, user){
+			User.findByIdAndUpdate(req.user, { $push : { messages: message._id }}, function(err, user){
 				if(err){
-					return res.json(err);
+					return err;
 				}
-				return res.json(message);
+				return message;
 			})
 		})
 	},
@@ -37,4 +38,5 @@ module.exports = {
 			})
 		})
 	}
+
 }

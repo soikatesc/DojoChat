@@ -1,5 +1,5 @@
 
-<div ng-controller="ChatsController as CC">
+<div ng-controller="MessagesController as MC">
 		<div id="navbar">
 	<nav class="navbar navbar-default">
   	<div class="container-fluid">
@@ -21,28 +21,25 @@
 	</div>
 
 	<h1>Chat</h1>
-	<div ng-init="CC.index()">
+	<div ng-init="MC.index()">
 		<div ng-init="UC.session()">
 			<div id="chat-wrap">
 				<h4>{{UC.current_user.username}} has joined....</h4>
-				<p ng-repeat="msg in CC.msgs track by $index">{{msg.data.text}} - by {{msg.data.user}}...</p>
+				<p ng-repeat="msg in MC.msgs track by $index">{{msg.content}} - by {{msg.user.username}}...</p>
 			</div>
 
-			<form enctype="multipart/form-data" ng-submit="CC.sendMsg(CC.msg, UC.current_user)">
-				<input type="text" ng-model="CC.msg.text">
-				<input  type="submit" value="send">
-			
-				<!-- <label class="btn btn-success">
-					Browse
-				</label>
-				<br>
-				<br> -->
-				<input type="file" name="myfile" ng-model="CC.msg.img" />
-				<!-- <button class="btn btn-primary" ng-disabled="uploading">Upload</button>
-				<br> -->
-				<!-- <img ng-src="{{ thumbnail.dataUrl || }}"> -->
-
+			<form ng-submit="MC.sendMsg(MC.msg, UC.current_user)">
+				<input type="text" ng-model="MC.msg.content">
+				<input  type="submit" value="send">					
 			</form>
+
+
+
+			<form action="/upload" method="post" enctype="multipart/form-data">
+				<input type="file" name="image">
+				<input  type="submit" value="send">
+			</form>
+
 		</div>
 	</div>
 </div>
