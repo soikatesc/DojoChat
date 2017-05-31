@@ -20,8 +20,14 @@
 	</nav>
 	</div>
 
+	<div>
+		<h1>Profile pic</h1>
+		<img src='image-1496252322771.jpg' alt='profile' style='width:304px;height:228px;'>
+
+	</div>
+
 	<h1>Chat</h1>
-	<div ng-init="MC.index()">
+	<div ng-init="MC.index(); MC.upateScroll()">
 		<div ng-init="UC.session()">
 			<div id="chat-wrap">
 				<h4>{{UC.current_user.username}} has joined....</h4>

@@ -4,6 +4,15 @@ app.controller('MessagesController', function(SocketConnector, MessageFactory, $
 	var self = this
 	self.msgs = []
 
+	self.updateScroll = function(){
+		var element = document.getElementById('chat-wrap')
+		console.log(element)
+		if(element){
+			element.scrollTop = element.scrollHeight
+		}
+	}
+	setTimeout(self.updateScroll, 200);
+
 	self.index = function(){
 		MessageFactory.index(function(res){
 			var recent_msg = res.data[res.data.length-1]
@@ -11,7 +20,7 @@ app.controller('MessagesController', function(SocketConnector, MessageFactory, $
 				var audio = new Audio('../../assets/sound/recv.mp3');
 				audio.play();
 			}
-			self.msgs = res.data
+			self.msgs = res.data;
 		})
 	}
 
@@ -27,5 +36,8 @@ app.controller('MessagesController', function(SocketConnector, MessageFactory, $
 	SocketConnector.on('get msg', function(data){
 		self.index()
 		$scope.$digest()
-	})	
+		setTimeout(self.updateScroll, 100);
+	})
+
+
 })
