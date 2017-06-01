@@ -1,8 +1,17 @@
 var mongoose = require('mongoose')
 var fs = require('fs')
 
-mongoose.connect('mongodb://localhost/dojo_chat')
 mongoose.Promise = global.Promise
+mongoose.connect('mongodb://localhost/dojo_chat')
+.then(
+    function(){
+      console.log('Connected to database')
+    },
+    function(){
+      console.log('failed to connect to database')
+    }
+)
+
 
 var models_path = __dirname + '/../models'
 

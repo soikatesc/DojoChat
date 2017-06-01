@@ -1,10 +1,11 @@
-app.controller('UsersController', function(UserFactory,$cookies, $location){
-	console.log('Initializing UserController...')
+app.controller('UsersController', function(UserFactory, MessageFactory, SocketConnector, $scope, $cookies, $location){
+	console.log('Initializing UsersController...')
 
 	var self = this
 	self.current_user = {}  //user object saved
 	self.registration_errors = []
 	self.login_errors = []
+	self.message = ''
 
 	self.session = function(){
 		UserFactory.session(function(user){
@@ -19,6 +20,7 @@ app.controller('UsersController', function(UserFactory,$cookies, $location){
 
 	self.logout = function(){
 		$cookies.remove('user_id')
+		SocketConnector.emit('send_user_status', self.current_user.username + " just left.")
 		$location.url('/')
 	}
 
@@ -32,7 +34,9 @@ app.controller('UsersController', function(UserFactory,$cookies, $location){
 					self.login_errors.push(error.message)
 				}
 			}else{
+				self.message = "Welcome to the DojoChat box " + res.data.username + "!!!"
 				$cookies.put('user_id', res.data._id)
+				SocketConnector.emit('send_user_status', res.data.username + " just joined.")
 				$location.url('dashboard')
 			}
 		})
@@ -43,9 +47,9 @@ app.controller('UsersController', function(UserFactory,$cookies, $location){
 		console.log('newUser:', newUser)
 
 		// if(newUser.password != newUser.confirmPassword){
-		// 	self.registration_errors.push("password didn't match")	
+		// 	self.registration_errors.push("password didn't match")
 		// }
-					
+
 		UserFactory.create(newUser, function(res){
 			if(res.data.errors){
 				for(key in res.data.errors){
@@ -58,10 +62,11 @@ app.controller('UsersController', function(UserFactory,$cookies, $location){
 				//save the user into session
 				var user_id = (res.data._id)
 				$cookies.put('user_id', user_id)
+				SocketConnector.emit('send_user_status', res.data.username + " just joined.")
 				$location.url('dashboard')
 				//redirect to next page
 			}
-		})		
+		})
 	}
 
 })
