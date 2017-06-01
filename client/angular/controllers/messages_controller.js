@@ -6,7 +6,6 @@ app.controller('MessagesController', function(SocketConnector, MessageFactory, $
 
 	self.updateScroll = function(){
 		var element = document.getElementById('chat-wrap')
-		console.log(element)
 		if(element){
 			element.scrollTop = element.scrollHeight
 		}
@@ -24,7 +23,12 @@ app.controller('MessagesController', function(SocketConnector, MessageFactory, $
 		})
 	}
 
-	self.sendMsg = function(msg, user){
+	self.sendMsg = function(msg, user) {
+		// if message is blank, prevent user from generate any message or sound
+		if (!msg) {
+			return;
+		}
+
 		var audio = new Audio('../../assets/sound/track1.mp3');
 		audio.play();
 
@@ -36,7 +40,7 @@ app.controller('MessagesController', function(SocketConnector, MessageFactory, $
 	SocketConnector.on('get msg', function(data){
 		self.index()
 		$scope.$digest()
-		setTimeout(self.updateScroll, 100);
+		setTimeout(self.updateScroll, 200);
 	})
 
 
