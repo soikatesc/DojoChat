@@ -8,7 +8,7 @@
 		</nav>
 	</div>
 	<div>
-		<img src='CodingDojoLogo.png' alt='profile'>
+		<img src='CodingDojoLogo.png' alt='profile' id="logo_pic">
 	</div>
 
 	<h1>Chat</h1>
@@ -16,11 +16,11 @@
 		<div ng-init="UC.session()" class="row">
 			<div class="col s9" id="chat-container">
 				<div id="chat-wrap">
-					<p ng-repeat="msg in MC.msgs track by $index">{{msg.content}} - by {{msg.user.username}}...</p>
+					<p ng-repeat="msg in MC.msgs track by $index"><span id="msg_content">{{msg.content}}</span> - by {{msg.user.username}} - {{msg.createdAt | date: "M/d/yy h:mm a"}}...</p>
 				</div>
 				<form ng-submit="MC.sendMsg(MC.msg, UC.current_user)">
 					<input type="text" ng-model="MC.msg.content" ng-keypress="MC.send_typing_status(UC.current_user.username)">
-					<input  type="submit" value="send">	
+					<input  type="submit" value="send">
 					<span id ="user-status" ng-repeat="event in MC.events track by $index"><i>{{event}}</i></span>
 				</form>
 			</div>
