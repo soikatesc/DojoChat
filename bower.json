@@ -19,6 +19,7 @@
     "angular-route": "^1.6.4",
     "angular-cookies": "^1.6.4",
     "ng-ip-address": "^1.1.11",
-    "angular-upload": "^1.0.12"
+    "angular-upload": "^1.0.12",
+    "materialize": "^0.98.2"
   }
 }

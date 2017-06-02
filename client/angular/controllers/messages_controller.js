@@ -1,4 +1,4 @@
-app.controller('MessagesController', function(SocketConnector, MessageFactory, $scope, $cookies, $location, $http, upload){
+app.controller('MessagesController', function(SocketConnector, MessageFactory, $scope, $cookies, $location, $http){
 	console.log('Initializing ChatController...')
 
 	var self = this
