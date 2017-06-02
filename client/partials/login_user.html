@@ -1,64 +1,92 @@
-<div>
-	<h1>Login and Registration</h1>
-	<div class="alert alert-danger" style="padding:0px">
-  		<p role="alert" ng-repeat="error in UC.login_errors">{{error}}</p>
-
-		<p role="alert" ng-repeat="error in UC.registration_errors">{{error}}</p>
+<div class="teal lighten-2">
+	<div class="nav-bar">
+	    	<h2>Dojo Chats</h2>
+	    <div class="row" id="login_div">
+		    <form class="col s12 log_form" ng-submit="UC.login(UC.loginUser)">
+			    <div class="input-field col s6">
+			        <label for="email">Email</label>
+			        <input id="email" type="email" class="validate" ng-model="UC.loginUser.email"> 
+			    </div>
+		        <div class="input-field col s6">
+		         	<input id="password" type="password" class="validate" ng-model="UC.loginUser.password">
+		          	<label for="password">Password</label>
+		        </div>
+		      	<button id="log_button" class="btn waves-effect waves-light" type="submit" name="action">Login</button>
+		    </form>
+		    <p role="alert" class="error" ng-repeat="error in UC.login_errors">{{error}}</p>
+		</div>
 	</div>
-
-
+<!-- END OF NAV BAR -->
+	
 	<div class="row">
-		<form class="form-group col-md-6" ng-submit="UC.create(UC.newUser)">
-		<div class="form-group">
-	    	<label for="email">Email address</label>
-	    	<input ng-model="UC.newUser.email" type="email" class="form-control" id="email" placeholder="Email">
-	  	</div>
-
-	  	<div class="form-group">
-	    	<label for="username">User name</label>
-	    	<input ng-model="UC.newUser.username" type="text" class="form-control" id="username">
-	  	</div>
-
-		<div class="form-group">
-	    	<label for="first_name">First Name</label>
-	    	<input ng-model="UC.newUser.first_name" type="text" class="form-control" id="first_name" placeholder="First name">
-	  	</div>
-
-	  	<div class="form-group">
-	    	<label for="last_name">Last Name</label>
-	    	<input ng-model="UC.newUser.last_name" type="text" class="form-control" id="last_name" placeholder="Last name">
-	  	</div>
-
-	  	<div class="form-group">
-	    	<label for="password">Password</label>
-	    	<input ng-model="UC.newUser.password" type="password" class="form-control" id="password" placeholder="Password">
-	  	</div>
-
-	  	<div class="form-group">
-	    	<label for="password-confirm">Confirm Password</label>
-	    	<input ng-model="UC.newUser.confirmPassword" type="password" class="form-control" id="password-confirm">
-	  	</div>
-
-	  	<div class="form-group">
-	    	<label for="birthday">Birthday</label>
-	    	<input ng-model="UC.newUser.birthday" type="Date" class="form-control" id="birthday">
-	  	</div>
-
-	  	<button type="submit" class="btn btn-primary">Submit</button>
-		</form>
-		<form class="form-group col-md-6" ng-submit="UC.login(UC.loginUser)">
-			<div>
-		    	<label for="email">Email address</label>
-		    	<input ng-model="UC.loginUser.email" type="email" class="form-control" id="email" placeholder="Email">
-
-		    	<label for="password">Password</label>
-		    	<input ng-model="UC.loginUser.password" type="password" class="form-control" id="password" placeholder="Password">
-		    	<br>
-		    	<div>
-		    		<button type="submit" class="btn btn-primary">Submit</button>
-		    	</div>    	
-		  	</div>
-		</form>
-	</div>
-
+    <form class="col s6 offset-s3 log_form" ng-submit="UC.create(UC.newUser)">
+    <h5>Don't have an account?  Register here.</h5>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="first_name" type="text" class="validate" ng-model="UC.newUser.first_name" >
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate" ng-model="UC.newUser.last_name">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">	
+	    	<input id="username" ng-model="UC.newUser.username" type="text">
+	    	<label for="username">Username</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="password" type="password" class="validate" ng-model="UC.newUser.password">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="confirmPassword" type="password" class="validate"  ng-model="UC.newUser.confirmPassword">
+          <label for="confirmPassword">Confirm Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="email" type="email" class="validate" ng-model="UC.newUser.email">
+          <label for="email">Email</label>
+        </div>
+      </div>
+       <div class="row">
+        <div class="col s6">
+       		<label>Birthday</label>              
+            <input type="date" class="validate" ng-model="UC.newUser.birthday"> 
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light" id="reg_button" type="submit" name="action">Register</button>
+        <p role="alert" class="error" ng-repeat="error in UC.registration_errors">{{error}}</p>
+    </form>
+  
+  </div>
+<!-- 	END OF REGISTRATION -->
+	<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s6">
+                <h5 class="white-text">Dojo Chats</h5>
+                <p class="grey-text text-lighten-4">A space for ninjas to chat.</p>
+              </div>
+              <div class="col l4 offset-l2 s6">
+                <h5 class="white-text">Want to know more?</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!/about">About</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!/about">Meet the Team</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/soikatesc/DojoChat" target="_blank">Github</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            </div>
+          </div>
+        </footer>
 </div>

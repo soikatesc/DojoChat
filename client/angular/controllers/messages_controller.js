@@ -1,5 +1,6 @@
-app.controller('MessagesController', function(SocketConnector, MessageFactory, $scope, $cookies, $location, $interval, $http, upload){
+app.controller('MessagesController', function(SocketConnector, MessageFactory, $scope, $cookies, $location, $interval, $http){
 	console.log('Initializing ChatsController...')
+
 
 	var recent_msg = {}
 	var self = this
