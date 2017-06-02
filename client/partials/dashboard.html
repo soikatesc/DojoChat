@@ -29,14 +29,17 @@
 	<h1>Chat</h1>
 	<div ng-init="MC.index(); MC.upateScroll()">
 		<div ng-init="UC.session()">
+			<h4><i>{{UC.message}}</i></h4>
+			<div class="">
+				<p ng-repeat="event in MC.events track by $index"><i>{{event}}</i></p>
+			</div>
 			<div id="chat-wrap">
-				<h4>{{UC.current_user.username}} has joined....</h4>
 				<p ng-repeat="msg in MC.msgs track by $index">{{msg.content}} - by {{msg.user.username}}...</p>
 			</div>
 
 			<form ng-submit="MC.sendMsg(MC.msg, UC.current_user)">
-				<input type="text" ng-model="MC.msg.content">
-				<input  type="submit" value="send">					
+				<input type="text" ng-model="MC.msg.content" ng-keypress="MC.send_typing_status(UC.current_user.username)">
+				<input  type="submit" value="send">
 			</form>
 
 
