@@ -1,4 +1,4 @@
-app.controller('MessagesController', function(SocketConnector, MessageFactory, $scope, $cookies, $location, $interval, $http){
+app.controller('MessagesController', function(SocketConnector, MessageFactory, $scope, $cookies, $location, $interval, $http, upload){
 	console.log('Initializing ChatsController...')
 
 	var recent_msg = {}
@@ -55,23 +55,28 @@ app.controller('MessagesController', function(SocketConnector, MessageFactory, $
 	}
 
 	SocketConnector.on('recv_status', function(content){
-		if (content.event !== MessageFactory.events[MessageFactory.events.length - 1]) {
+		var count = 0
+		for (var i = 0; i < MessageFactory.events.length; i++) {
+			if (MessageFactory.events[i] == content.event) {
+				count ++
+			}
+		}
+		if (count == 0) {
 			MessageFactory.events.push(content.event)
 		}
 		setTimeout(function(){
 			MessageFactory.events.splice(MessageFactory.events.indexOf(content.event),1)
 			self.reloadEvent()
 			},
-			10000
+			7000
 		)
-		if (MessageFactory.events.length > 10){
+		if (MessageFactory.events.length > 5){
 			MessageFactory.events.splice(0,1)
 		}
 		$scope.$digest()
 	})
 
 	SocketConnector.on('get msg', function(data){
-		self.index();
 		$scope.$digest()
 		setTimeout(self.updateScroll, 200);
 	})
