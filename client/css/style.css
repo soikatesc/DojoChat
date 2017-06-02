@@ -67,4 +67,14 @@
 	color: rgb(0,167,233);
 	margin-left: 30px;
 }
-
+#logo_pic {
+	width: 150px;
+	border-radius: 10px;
+}
+#msg_content {
+	font-weight: 450;
+	font-size: 20px;
+	background-color: #00a7e9;
+	border-radius: 5px;
+	padding: 5px;
+}

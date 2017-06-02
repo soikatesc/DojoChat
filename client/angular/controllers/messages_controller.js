@@ -1,9 +1,10 @@
-app.controller('MessagesController', function(SocketConnector, MessageFactory, $scope, $cookies, $location, $interval, $http, upload){
+app.controller('MessagesController', function(SocketConnector, MessageFactory, $scope, $cookies, $location, $interval, $http){
 	console.log('Initializing ChatsController...')
 
 	var recent_msg = {}
 	var self = this
 	self.msgs = []
+	var load_count = 0;
 
 	self.events = MessageFactory.events
 
@@ -12,24 +13,29 @@ app.controller('MessagesController', function(SocketConnector, MessageFactory, $
 	}
 
 	self.updateScroll = function(){
-		var element = document.getElementById('chat-wrap')
+		var element = document.getElementById('chat-container')
 		if(element){
 			element.scrollTop = element.scrollHeight
 		}
 	}
-	setTimeout(self.updateScroll, 200);
+
 
 	self.index = function(){
 		MessageFactory.index(function(res){
 			recent_msg = res.data[res.data.length-1]
 			console.log(res.data);
-			if(recent_msg){
+			if(recent_msg && load_count > 0){
 				if(recent_msg.user._id != $cookies.get('user_id')){
 					var audio = new Audio('../../assets/sound/recv.mp3');
 					audio.play();
 				}
 			}
 			self.msgs = res.data
+			setTimeout(self.updateScroll, 200);
+
+			// increment index() load count to fix initial recv sound issue
+			load_count++;
+
 			$interval(function(){
 				self.reloadEvent()
 			}, 100);
@@ -77,6 +83,7 @@ app.controller('MessagesController', function(SocketConnector, MessageFactory, $
 	})
 
 	SocketConnector.on('get msg', function(data){
+		self.index();
 		$scope.$digest()
 		setTimeout(self.updateScroll, 200);
 	})
