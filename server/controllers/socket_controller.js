@@ -12,11 +12,14 @@ module.exports = function(server){
 		console.log('working')
 		console.log(socket.id)
 		socket.on('send msg', function(data){
-			//save into messeage database
 			Messages.create(data)
-
-			//broadcast to all users
 			io.emit('get msg', {data:data, socket_id: socket.id})
+		})
+		socket.on('send_user_status', function(event){
+			io.emit('recv_status', {event:event, socket_id:socket.id})
+		})
+		socket.on('send_typing_status', function(event){
+			io.emit('recv_status', {event:event, socket_id:socket.id})
 		})
 	})
 
