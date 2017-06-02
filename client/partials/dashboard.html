@@ -1,54 +1,39 @@
 
-<div ng-controller="MessagesController as MC">
-		<div id="navbar">
-	<nav class="navbar navbar-default">
-  	<div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-    	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-          <ul class="nav navbar-nav navbar-right">
-      	<li><a class="navbar-brand" href="#" ng-click="UC.logout()">Logout</a></li>
-      </ul>
-
-  	</div><!-- /.container-fluid -->
-	</nav>
+<div ng-controller="MessagesController as MC" class="container">
+	<div id="navbar">
+		<nav class="navbar navbar-default">
+	        <ul class="nav navbar-nav navbar-right">
+	      		<li><a class="navbar-brand" href="#" ng-click="UC.logout()">Logout</a></li>
+	      	</ul>
+		</nav>
 	</div>
-
 	<div>
-		<h1>Profile pic</h1>
-		<img src='CodingDojoLogo.png' alt='profile' style='width:80px; height:80px;'>
-
+		<img src='CodingDojoLogo.png' alt='profile'>
 	</div>
 
 	<h1>Chat</h1>
 	<div ng-init="MC.index(); MC.upateScroll()">
-		<div ng-init="UC.session()">
-			<h4><i>{{UC.message}}</i></h4>
-			<div class="">
-				<p ng-repeat="event in MC.events track by $index"><i>{{event}}</i></p>
+		<div ng-init="UC.session()" class="row">
+			<div class="col s9" id="chat-container">
+				<div id="chat-wrap">
+					<p ng-repeat="msg in MC.msgs track by $index">{{msg.content}} - by {{msg.user.username}}...</p>
+				</div>
+				<form ng-submit="MC.sendMsg(MC.msg, UC.current_user)">
+					<input type="text" ng-model="MC.msg.content" ng-keypress="MC.send_typing_status(UC.current_user.username)">
+					<input  type="submit" value="send">	
+					<span id ="user-status" ng-repeat="event in MC.events track by $index"><i>{{event}}</i></span>
+				</form>
 			</div>
-			<div id="chat-wrap">
-				<p ng-repeat="msg in MC.msgs track by $index">{{msg.content}} - by {{msg.user.username}}...</p>
+		</div>
+		<div class="row">
+			<div class="col s9" id="upload-container">
+				<form action="/upload" method="post" enctype="multipart/form-data">
+					<input type="file" name="image">
+					<input  type="submit" value="send">
+
+				</form>
+
 			</div>
-
-			<form ng-submit="MC.sendMsg(MC.msg, UC.current_user)">
-				<input type="text" ng-model="MC.msg.content" ng-keypress="MC.send_typing_status(UC.current_user.username)">
-				<input  type="submit" value="send">
-			</form>
-
-
-
-			<form action="/upload" method="post" enctype="multipart/form-data">
-				<input type="file" name="image">
-				<input  type="submit" value="send">
-			</form>
-
 		</div>
 	</div>
 </div>

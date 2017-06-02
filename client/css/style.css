@@ -56,5 +56,15 @@
 .error{
 	color: red;
 }
-
+#chat-container{
+	overflow: auto;
+	border: 1px solid grey;
+	height: 600px;
+	background-color: rgb(255, 255, 255, .6);
+	border-radius: 10px;
+}
+#user-status{
+	color: rgb(0,167,233);
+	margin-left: 30px;
+}
 
