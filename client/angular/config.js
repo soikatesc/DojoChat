@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'ngCookies', 'ng-ip-address'])
+var app = angular.module('app', ['ngRoute', 'ngCookies'])
 
 console.log('loading config file....')
 
