@@ -1,7 +1,6 @@
 app.controller('MessagesController', function(SocketConnector, MessageFactory, $scope, $cookies, $location, $interval, $http){
 	console.log('Initializing ChatsController...')
 
-
 	var recent_msg = {}
 	var self = this
 	self.msgs = []
@@ -72,6 +71,7 @@ app.controller('MessagesController', function(SocketConnector, MessageFactory, $
 	})
 
 	SocketConnector.on('get msg', function(data){
+		self.index();
 		$scope.$digest()
 		setTimeout(self.updateScroll, 200);
 	})
