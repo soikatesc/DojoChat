@@ -1,2 +1,2 @@
 # DojoChat
-A group messenger where people can communicate via chat.
+A group messenger where people can communicate.
