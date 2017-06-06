@@ -53,6 +53,7 @@ app.controller('MessagesController', function(SocketConnector, MessageFactory, $
 		msg.user = user._id
 		SocketConnector.emit('send msg', msg)
 		msg.content = ''
+		self.index()
 	}
 
 	self.send_typing_status = function(name){
