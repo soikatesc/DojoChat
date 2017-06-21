@@ -13,7 +13,7 @@ app.controller('MessagesController', function(SocketConnector, MessageFactory, $
 	}
 
 	self.updateScroll = function(){
-		var element = document.getElementById('chat-container')
+		var element = document.getElementById('chat-wrap')
 		if(element){
 			element.scrollTop = element.scrollHeight
 		}

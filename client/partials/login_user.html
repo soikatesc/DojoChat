@@ -1,6 +1,12 @@
 <div class="teal lighten-2">
-	<div class="nav-bar">
+	<div class="row nav-bar">
+    <div class="col s12">
+      <div class="row" id="heading">
+        <div class="col s12">
 	    	<h2>Dojo Chats</h2>
+        <p>A place for ninjas to chat.</p>
+        </div>
+      </div>
 	    <div class="row" id="login_div">
 		    <form class="col s12 log_form" ng-submit="UC.login(UC.loginUser)">
 			    <div class="input-field col s6">
@@ -15,6 +21,7 @@
 		    </form>
 		    <p role="alert" class="error" ng-repeat="error in UC.login_errors">{{error}}</p>
 		</div>
+    </div>
 	</div>
 <!-- END OF NAV BAR -->
 	
