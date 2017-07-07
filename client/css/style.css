@@ -1,85 +1,74 @@
-#reg_button{
-	margin-left: 70px;
-	margin-bottom: 20px;
-}
-#log_button{
-	margin-bottom: 8px;
-	margin-left: 20px;
-}
+
 .log_form{
-	margin-top: 7px;
+	margin-top: 1%;
 	background-color: rgba(255,255,255, .6);
 	border-radius: 5px;
 }
 .nav-bar{
-	background-color: white;
-
+	background-color: #093648;
 }
 #heading{
 	display: inline-block;
 	padding: left: 10%;
 	vertical-align: top;
 }
-.nav-bar h2{
-	color: #4db6ac;
-	text-shadow: -2px 0 black, 0 1px grey, 1px 0 grey, 0 -1px grey;
-}
-#login_div{
-	display: inline-block;
+.move-right{
 	float: right;
-	margin-right: 10px;
 }
+/*ABOUT PAGE STYLING*/
 .team-pic{
 	border-radius: 100%;
 	width: 100%;
 }
-.profile-container{
-	display: inline-block;
-	text-align: center;
-}
 .tech-icon{
 	width: 4rem;
-}
-.member-info{
-	height: 27%;
-}
-#team-des{
-	margin-bottom: 30px;
-}
-#member-container{
-	background-color: rgba(255,255,255, .6);
-	border-radius: 5px;
 }
 #icons{
 	font-size: 2rem
 }
-.error{
-	color: red;
+.profile-container{
+	margin-right: 8%;
 }
+#team-des{
+	margin-bottom: 5%;
+}
+.bold{
+	font-weight: bold;
+}
+#logo_pic {
+	margin-top: 10%;
+	width: 85%;
+	border-radius: 5%;
+}
+/*Chat Page Styling*/
 #chat-container{
-	border: 1px solid grey;
-	height: 75%;
-	background-color: rgb(255, 255, 255, .6);
-	border-radius: 10px;
-	padding: 10px;
+	border-radius: 2%;
+	background-color: rgba(255,255,255, .9);
+	height: 100vh;
 }
 #user-status{
 	color: rgb(0,167,233);
 	margin-left: 30px;
 }
-#logo_pic {
-	width: 150px;
-	border-radius: 10px;
-}
 #msg_content {
-	font-weight: 450;
-	font-size: 20px;
-	background-color: #00a7e9;
-	border-radius: 5px;
-	padding: 5px;
+	border-radius: 17%;
+	padding: 1%;
+	font-size: 18px;
+	font-weight: 400;
 }
 #chat-wrap{
 	overflow: auto;
-	height: 80%
+	height: 66%;
 }
-
+#chat-nav{
+	border-bottom: 2px solid black;
+	font-size: 1.3rem;
+	padding: 2%;
+}
+/*Other*/
+.nav-bar .input-field label {
+     color: #093648;
+}
+.error{
+	color: red;
+}
