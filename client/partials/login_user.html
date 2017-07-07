@@ -1,28 +1,34 @@
-<div class="teal lighten-2">
+
+<div class="blue lighten-5">
 	<div class="row nav-bar">
     <div class="col s12">
-      <div class="row" id="heading">
-        <div class="col s12">
+      <div id="heading" class="white-text col s12 m6 l6">
 	    	<h2>Dojo Chats</h2>
         <p>A place for ninjas to chat.</p>
-        </div>
       </div>
-	    <div class="row" id="login_div">
-		    <form class="col s12 log_form" ng-submit="UC.login(UC.loginUser)">
-			    <div class="input-field col s6">
-			        <label for="email">Email</label>
+		  <form class="col s12 m6 l4 offset-l1 log_form" ng-submit="UC.login(UC.loginUser)">
+        <div class="row">
+          <div class="input-field col s6">
 			        <input id="email" type="email" class="validate" ng-model="UC.loginUser.email"> 
+              <label for="email">Email</label>
 			    </div>
-		        <div class="input-field col s6">
-		         	<input id="password" type="password" class="validate" ng-model="UC.loginUser.password">
-		          	<label for="password">Password</label>
-		        </div>
+          <div class="input-field col s6">
+		        <input id="password" type="password" class="validate" ng-model="UC.loginUser.password">
+		        <label for="password">Password</label>
+		      </div>
+        </div>
+        <div class="row">
+          <div class="col s3">
 		      	<button id="log_button" class="btn waves-effect waves-light" type="submit" name="action">Login</button>
-		    </form>
-		    <p role="alert" class="error" ng-repeat="error in UC.login_errors">{{error}}</p>
+          </div>
+          <div class="col s4 offset-s3">
+            <p role="alert" class="error" ng-repeat="error in UC.login_errors">{{error}}</p>
+          </div>
+        </div>
+		  </form>
 		</div>
-    </div>
-	</div>
+  </div>
+	
 <!-- END OF NAV BAR -->
 	
 	<div class="row">
@@ -49,8 +55,6 @@
           <input id="password" type="password" class="validate" ng-model="UC.newUser.password">
           <label for="password">Password</label>
         </div>
-      </div>
-      <div class="row">
         <div class="input-field col s6">
           <input id="confirmPassword" type="password" class="validate"  ng-model="UC.newUser.confirmPassword">
           <label for="confirmPassword">Confirm Password</label>
@@ -63,37 +67,38 @@
         </div>
       </div>
        <div class="row">
-        <div class="col s6">
-       		<label>Birthday</label>              
+        <div class="col s6">              
             <input type="date" class="validate" ng-model="UC.newUser.birthday"> 
+            <label>Birthday</label>
         </div>
       </div>
-      <button class="btn waves-effect waves-light" id="reg_button" type="submit" name="action">Register</button>
+      <div class="row">
+        <button class="cols6 btn waves-effect waves-light" id="reg_button" type="submit" name="action">Register</button>
+      </div>
         <p role="alert" class="error" ng-repeat="error in UC.registration_errors">{{error}}</p>
     </form>
-  
   </div>
 <!-- 	END OF REGISTRATION -->
-	<footer class="page-footer">
+	<footer class="page-footer cyan darken-3">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s6">
+          <h5 class="white-text">Dojo Chats</h5>
+          <p class="grey-text text-lighten-4">A place for ninjas to chat.</p>
+        </div>
+        <div class="col l4 offset-l2 s6">
+            <h5 class="white-text">Want to know more?</h5>
+              <ul>
+                <li><a class="grey-text text-lighten-3" href="#!/about">About</a></li>
+                <li><a class="grey-text text-lighten-3" href="#!/about">Meet the Team</a></li>
+                <li><a class="grey-text text-lighten-3" href="https://github.com/soikatesc/DojoChat" target="_blank">Github</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <div class="footer-copyright">
           <div class="container">
-            <div class="row">
-              <div class="col l6 s6">
-                <h5 class="white-text">Dojo Chats</h5>
-                <p class="grey-text text-lighten-4">A space for ninjas to chat.</p>
-              </div>
-              <div class="col l4 offset-l2 s6">
-                <h5 class="white-text">Want to know more?</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!/about">About</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!/about">Meet the Team</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://github.com/soikatesc/DojoChat" target="_blank">Github</a></li>
-                </ul>
-              </div>
-            </div>
           </div>
-          <div class="footer-copyright">
-            <div class="container">
-            </div>
-          </div>
-        </footer>
+      </div>
+  </footer>
 </div>
