@@ -2,11 +2,11 @@
 <div class="blue lighten-5">
 	<div class="row nav-bar">
     <div class="col s12">
-      <div id="heading" class="white-text col s12 m6 l6">
+      <div id="heading" class="white-text col s12 m6 l6 offset-s2">
 	    	<h2>Dojo Chats</h2>
         <p>A place for ninjas to chat.</p>
       </div>
-		  <form class="col s12 m6 l4 offset-l1 log_form" ng-submit="UC.login(UC.loginUser)">
+		  <form class="col s12 m6 l4 offset-l2 log_form" ng-submit="UC.login(UC.loginUser)">
         <div class="row">
           <div class="input-field col s6">
 			        <input id="email" type="email" class="validate" ng-model="UC.loginUser.email"> 
@@ -28,11 +28,9 @@
 		  </form>
 		</div>
   </div>
-	
 <!-- END OF NAV BAR -->
-	
 	<div class="row">
-    <form class="col s6 offset-s3 log_form" ng-submit="UC.create(UC.newUser)">
+    <form class="col s12 m8 l6 offset-l3 offset-m2 log_form" ng-submit="UC.create(UC.newUser)">
     <h5>Don't have an account?  Register here.</h5>
       <div class="row">
         <div class="input-field col s6">

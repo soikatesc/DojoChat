@@ -26,8 +26,8 @@
 #icons{
 	font-size: 2rem
 }
-.profile-container{
-	margin-right: 8%;
+.profile{
+	margin-right: 30%;
 }
 #team-des{
 	margin-bottom: 5%;
@@ -44,21 +44,20 @@
 #chat-container{
 	border-radius: 2%;
 	background-color: rgba(255,255,255, .9);
-	height: 100vh;
 }
 #user-status{
 	color: rgb(0,167,233);
 	margin-left: 30px;
 }
 #msg_content {
-	border-radius: 17%;
+	border-radius: 30%;
 	padding: 1%;
 	font-size: 18px;
 	font-weight: 400;
 }
 #chat-wrap{
 	overflow: auto;
-	height: 66%;
+	height: 65vh;
 }
 #chat-nav{
 	border-bottom: 2px solid black;
