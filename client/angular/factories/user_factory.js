@@ -1,4 +1,4 @@
-app.factory('UserFactory', function($http, $cookies){
+app.factory('UserFactory', function($http, $cookies, $window){
 	var factory = {}
 
 	factory.create = function(newUser, callback){
@@ -7,10 +7,12 @@ app.factory('UserFactory', function($http, $cookies){
 
 	factory.session = function(callback){
 		var user_id = $cookies.get('user_id')
+		var token = $window.localStorage.getItem('token')
+		console.log(token)
 		if(!user_id){
 			return callback(false)
 		}
-		$http.get('/users/' + user_id).then(function(res){
+		$http.post('/users/' + user_id, { "token" : token }).then(function(res){
 			if(res.data.errors){
 				return callback(false)
 			}

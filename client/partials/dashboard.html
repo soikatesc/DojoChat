@@ -21,11 +21,11 @@
 			</form>
 		</div>
 	<!-- 	Upload file feature -->
-<!-- 		<div class="row">
+		<!-- <div class="row">
 			<div class="col s9" id="upload-container">
-				<form action="/upload" method="post" enctype="multipart/form-data">
-					<input type="file" name="image">
-					<input  type="submit" value="send">
+				<form ng-submit="MC.upload()">
+					<input type="file" name="myFile" ng-model="files" multiple >
+					<input  type="submit" value="Fileupload" >
 
 				</form>
 			</div>
