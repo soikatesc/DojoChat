@@ -1,4 +1,4 @@
-app.controller('UsersController', function(UserFactory, MessageFactory, SocketConnector, $scope, $cookies, $location){
+app.controller('UsersController', function(UserFactory, MessageFactory, SocketConnector, $scope, $cookies, $location, $window){
 	console.log('Initializing UsersController...')
 
 	var self = this
@@ -21,6 +21,10 @@ app.controller('UsersController', function(UserFactory, MessageFactory, SocketCo
 	self.logout = function(){
 		$cookies.remove('user_id')
 		SocketConnector.emit('send_user_status', self.current_user.username + " just left.")
+		$window.localStorage.removeItem('token')
+		if(!$window.localStorage.getItem('token')){
+			console.log('token removed')
+		}
 		$location.url('/')
 	}
 
@@ -34,8 +38,9 @@ app.controller('UsersController', function(UserFactory, MessageFactory, SocketCo
 					self.login_errors.push(error.message)
 				}
 			}else{
-				self.message = "Welcome to the DojoChat box " + res.data.username + "!!!"
-				$cookies.put('user_id', res.data._id)
+				self.message = "Welcome to the DojoChat box " + res.data.user.username + "!!!"
+				$cookies.put('user_id', res.data.user._id)
+				$window.localStorage.setItem('token', res.data.token)
 				SocketConnector.emit('send_user_status', res.data.username + " just joined.")
 				$location.url('dashboard')
 			}
@@ -60,9 +65,10 @@ app.controller('UsersController', function(UserFactory, MessageFactory, SocketCo
 
 			else{
 				//save the user into session
-				var user_id = (res.data._id)
+				var user_id = (res.data.user._id)
 				$cookies.put('user_id', user_id)
-				SocketConnector.emit('send_user_status', res.data.username + " just joined.")
+				$window.localStorage.setItem('token', res.data.token)
+				SocketConnector.emit('send_user_status', res.data.user.username + " just joined.")
 				$location.url('dashboard')
 				//redirect to next page
 			}

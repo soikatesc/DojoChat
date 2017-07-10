@@ -1,6 +1,8 @@
 var mongoose = require('mongoose')
 var User = mongoose.model('User')
 var bcrypt = require('bcryptjs')
+var jwt = require('jsonwebtoken');
+var secret = 'secret'
 
 
 module.exports = {
@@ -27,8 +29,17 @@ module.exports = {
 		User.create(req.body, function(err, user){
 			if(err){
 				return res.json(err)
+			}else{
+				var token = jwt.sign({
+					'username': user.username, 
+					'email': user.email
+				}, secret, { expiresIn: '24h' })
+
+				return res.json({
+					'user': user,
+					'token': token
+				})
 			}
-			return res.json(user)
 		})
 	},
 	login: function(req, res){
@@ -39,7 +50,16 @@ module.exports = {
 			}
 			//check for null, and authenticate the password
 			if(user && user.authenticate(req.body.password)){
-				return res.json(user)
+				//using web token data, secret, and expiration time
+				var token = jwt.sign({
+					'username': user.username, 
+					'email': user.email
+				}, secret, { expiresIn: '24h' })
+				
+				return res.json({
+					'user': user,
+					'token': token
+				})
 			}
 
 			return res.json({
@@ -52,6 +72,8 @@ module.exports = {
 		})
 	},
 	show: function(req, res){
+		console.log(req.body)
+		console.log('show route')
 		User.findById(req.params.id).exec(function(err, user){
 			if(err){
 				res.json(err)

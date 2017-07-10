@@ -4,6 +4,7 @@ var User = mongoose.model('User')
 
 module.exports = {
 	index: function(req, res){
+		console.log(req.body)
 		Message.find({}).populate('user').exec(function(err, messages){
 			if(err){
 				return res.json(err);

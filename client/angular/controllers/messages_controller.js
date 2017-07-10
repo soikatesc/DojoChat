@@ -88,4 +88,12 @@ app.controller('MessagesController', function(SocketConnector, MessageFactory, $
 		$scope.$digest()
 		setTimeout(self.updateScroll, 200);
 	})
+
+	self.upload = function () {
+		console.log('hello')
+
+	    
+  	}
+
+
 })
