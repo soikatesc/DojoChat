@@ -1,14 +1,15 @@
 var mongoose = require('mongoose')
 var fs = require('fs')
+var colors = require('colors');
 
 mongoose.Promise = global.Promise
 mongoose.connect('mongodb://localhost/dojo_chat')
 .then(
     function(){
-      console.log('Connected to database')
+      console.log('Connected to database' .bgGreen)
     },
     function(){
-      console.log('failed to connect to database')
+      console.log('failed to connect to database' .red)
     }
 )
 
