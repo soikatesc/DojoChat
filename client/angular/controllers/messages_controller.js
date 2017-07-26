@@ -4,6 +4,8 @@ app.controller('MessagesController', function(SocketConnector, MessageFactory, $
 	var recent_msg = {}
 	var self = this
 	self.msgs = []
+	self.user_msgs = []
+	self.other_msgs =[]
 	var load_count = 0;
 
 	self.events = MessageFactory.events
