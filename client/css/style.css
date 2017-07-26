@@ -43,6 +43,10 @@
 #chat-container{
 	border-radius: 2%;
 	background-color: rgba(255,255,255, .9);
+	height: 100vh;
+}
+#chat-container form{
+	margin:0;
 }
 #user-status{
 	color: rgb(0,167,233);
@@ -62,6 +66,10 @@
 	border-bottom: 2px solid black;
 	font-size: 1.3rem;
 	padding: 2%;
+}
+#dashboard{
+	margin: 0;
+	height: 100vh;
 }
 /*Other*/
 .nav-bar .input-field label {
